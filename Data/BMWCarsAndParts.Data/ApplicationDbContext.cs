@@ -26,6 +26,26 @@
 
         public DbSet<Setting> Settings { get; set; }
 
+        public DbSet<Car> Cars { get; set; }
+
+        public DbSet<CarBodyType> CarBodyTypes { get; set; }
+
+        public DbSet<CarModel> CarModels { get; set; }
+
+        public DbSet<Comment> Comments { get; set; }
+
+        public DbSet<Diary> Diaries { get; set; }
+
+        public DbSet<Image> Images { get; set; }
+
+        public DbSet<Like> Likes { get; set; }
+
+        public DbSet<Maintenance> Maintenances { get; set; }
+
+        public DbSet<PartForSale> PartsForSale { get; set; }
+
+        public DbSet<PartType> PartTypes { get; set; }
+
         public override int SaveChanges() => this.SaveChanges(true);
 
         public override int SaveChanges(bool acceptAllChangesOnSuccess)
