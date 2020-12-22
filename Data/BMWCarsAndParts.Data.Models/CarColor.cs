@@ -7,6 +7,6 @@
         Red,
         Green,
         Blue,
-        Silver
+        Silver,
     }
 }

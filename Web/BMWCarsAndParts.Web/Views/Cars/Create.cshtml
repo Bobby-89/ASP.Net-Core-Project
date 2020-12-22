@@ -14,7 +14,7 @@
 
     <div class="form-group">
         <label asp-for="CarModelId"></label>
-        <select asp-for="CarModelId" class="form-control" asp-items="carModel"></select>
+        <select asp-for="CarModelId" class="form-control" asp-items="carModel"><option selected="selected" value="">Please select</option></select>
         <span asp-validation-for="CarModelId" class="text-danger"></span>
     </div>
     <div class="form-group">
@@ -31,7 +31,7 @@
 
     <div class="form-group">
         <label asp-for="CarBodyTypeId"></label>
-        <select asp-for="CarBodyTypeId" class="form-control" asp-items="bodyTypes"></select>
+        <select asp-for="CarBodyTypeId" class="form-control" asp-items="bodyTypes"><option selected="selected" value="">Please select</option></select>
         <span asp-validation-for="CarBodyTypeId" class="text-danger"></span>
     </div>
     <div class="form-group">

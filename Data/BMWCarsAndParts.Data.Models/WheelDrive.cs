@@ -4,6 +4,6 @@
     {
         RWD,
         AWD,
-        FWD
+        FWD,
     }
 }
