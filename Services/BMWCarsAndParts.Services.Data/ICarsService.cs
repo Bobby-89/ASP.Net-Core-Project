@@ -1,9 +1,11 @@
 ﻿namespace BMWCarsAndParts.Services.Data
 {
+    using System.Threading.Tasks;
+
     using BMWCarsAndParts.Web.ViewModels.Cars;
 
     public interface ICarsService
     {
-        void Create(CreateCarInputModel input);
+        Task CreateAsync(CreateCarInputModel input);
     }
 }

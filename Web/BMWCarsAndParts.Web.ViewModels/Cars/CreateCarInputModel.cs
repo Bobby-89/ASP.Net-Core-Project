@@ -8,6 +8,7 @@
 
     public class CreateCarInputModel
     {
+        [Required]
         [Display(Name = "Model")]
         public int CarModelId { get; set; }
 
@@ -20,6 +21,7 @@
         [Range(0, int.MaxValue)]
         public int Mileage { get; set; }
 
+        [Required]
         [Display(Name = "Vehicle type")]
         public int CarBodyTypeId { get; set; }
 
@@ -47,7 +49,7 @@
         public decimal Price { get; set; }
 
         [Required]
-        [Range(50, 500)]
+        [MinLength(10)]
         public string Description { get; set; }
 
         [Display(Name = "For sale")]

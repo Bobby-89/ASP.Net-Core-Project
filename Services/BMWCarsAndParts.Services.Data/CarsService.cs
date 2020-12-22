@@ -1,5 +1,7 @@
 ﻿namespace BMWCarsAndParts.Services.Data
 {
+    using System.Threading.Tasks;
+
     using BMWCarsAndParts.Data.Common.Repositories;
     using BMWCarsAndParts.Data.Models;
     using BMWCarsAndParts.Web.ViewModels.Cars;
@@ -13,9 +15,22 @@
             this.carRepository = carRepository;
         }
 
-        public void Create(CreateCarInputModel input)
+        public async Task CreateAsync(CreateCarInputModel input)
         {
-            var car = new Car();
+            var car = new Car
+            {
+                CarModelId = input.CarModelId,
+                Fuel = input.Fuel,
+                CarBodyTypeId = input.CarBodyTypeId,
+                Description = input.Description,
+                Color = input.Color,
+                EngineCC = input.EngineCC,
+                FirstRegistrationDate = input.FirstRegistrationDate,
+                HorsePower = input.HorsePower,
+            };
+
+            await this.carRepository.AddAsync(car);
+            await this.carRepository.SaveChangesAsync();
         }
     }
 }

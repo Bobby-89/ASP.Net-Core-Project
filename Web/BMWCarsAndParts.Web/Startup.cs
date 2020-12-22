@@ -68,6 +68,7 @@
             services.AddTransient<IGetCountService, GetCountService>();
             services.AddTransient<IBodyTypesService, BodyTypesService>();
             services.AddTransient<ICarModelsService, CarModelsService>();
+            services.AddTransient<ICarsService, CarsService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
