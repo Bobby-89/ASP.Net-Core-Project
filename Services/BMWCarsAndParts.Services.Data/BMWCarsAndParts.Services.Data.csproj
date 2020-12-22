@@ -21,6 +21,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Data\BMWCarsAndParts.Data.Common\BMWCarsAndParts.Data.Common.csproj" />
     <ProjectReference Include="..\..\Data\BMWCarsAndParts.Data.Models\BMWCarsAndParts.Data.Models.csproj" />
+    <ProjectReference Include="..\..\Web\BMWCarsAndParts.Web.ViewModels\BMWCarsAndParts.Web.ViewModels.csproj" />
     <ProjectReference Include="..\BMWCarsAndParts.Services.Mapping\BMWCarsAndParts.Services.Mapping.csproj" />
   </ItemGroup>
 

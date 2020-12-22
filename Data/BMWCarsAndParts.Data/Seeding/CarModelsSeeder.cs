@@ -35,6 +35,8 @@
             await dbContext.CarModels.AddAsync(new CarModel { Name = "Z4 series" });
             await dbContext.CarModels.AddAsync(new CarModel { Name = "Z8 series" });
             await dbContext.CarModels.AddAsync(new CarModel { Name = "M1 series" });
+
+            await dbContext.SaveChangesAsync();
         }
     }
 }

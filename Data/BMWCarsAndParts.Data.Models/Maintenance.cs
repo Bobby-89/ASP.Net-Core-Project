@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
-using BMWCarsAndParts.Data.Common.Models;
-
-namespace BMWCarsAndParts.Data.Models
+﻿namespace BMWCarsAndParts.Data.Models
 {
+    using System;
+    using System.ComponentModel.DataAnnotations;
+
+    using BMWCarsAndParts.Data.Common.Models;
+
     public class Maintenance : BaseDeletableModel<int>
     {
         [Required]

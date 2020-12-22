@@ -1,0 +1,83 @@
+﻿@using BMWCarsAndParts.Data.Models
+@model BMWCarsAndParts.Web.ViewModels.Cars.CreateCarInputModel
+@{
+    this.ViewData["Title"] = "Add new car";
+
+    var bodyTypes = this.Model.BodyTypes.Select(x => new SelectListItem(x.Value, x.Key));
+    var carModel = this.Model.ModelTypes.Select(x => new SelectListItem(x.Value, x.Key));
+}
+
+<form method="post" class="col-md-6 offset-md-0">
+    <h1>@this.ViewData["Title"]</h1>
+
+    <div asp-validation-summary="All"></div>
+
+    <div class="form-group">
+        <label asp-for="CarModelId"></label>
+        <select asp-for="CarModelId" class="form-control" asp-items="carModel"></select>
+        <span asp-validation-for="CarModelId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="FirstRegistrationDate"></label>
+        <input asp-for="FirstRegistrationDate" class="form-control" />
+        <span asp-validation-for="FirstRegistrationDate" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Mileage"></label>
+        <input asp-for="Mileage" class="form-control" />
+        <span asp-validation-for="Mileage" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="CarBodyTypeId"></label>
+        <select asp-for="CarBodyTypeId" class="form-control" asp-items="bodyTypes"></select>
+        <span asp-validation-for="CarBodyTypeId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Fuel"></label>
+        <input asp-for="Fuel" class="form-control" />
+        <span asp-validation-for="Fuel" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="EngineCC"></label>
+        <input asp-for="EngineCC" class="form-control" />
+        <span asp-validation-for="EngineCC" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="HorsePower"></label>
+        <input asp-for="HorsePower" class="form-control" />
+        <span asp-validation-for="HorsePower" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Transmission"></label>
+        <input asp-for="Transmission" class="form-control" />
+        <span asp-validation-for="Transmission" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="WheelDrive"></label>
+        <input asp-for="WheelDrive" class="form-control" />
+        <span asp-validation-for="WheelDrive" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Color"></label>
+        <input asp-for="Color" class="form-control" />
+        <span asp-validation-for="Color" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Price"></label>
+        <input asp-for="Price" class="form-control" />
+        <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Description"></label>
+        <textarea asp-for="Description" class="form-control" rows="5"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="IsForSale"></label>
+        <input asp-for="IsForSale" class="form-control" />
+        <span asp-validation-for="IsForSale" class="text-danger"></span>
+    </div>
+    <input type="submit" class="btn btn-primary" />
+</form>

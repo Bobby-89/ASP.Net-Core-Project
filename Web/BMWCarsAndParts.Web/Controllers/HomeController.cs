@@ -1,16 +1,23 @@
 ﻿namespace BMWCarsAndParts.Web.Controllers
 {
     using System.Diagnostics;
-
+    using BMWCarsAndParts.Services.Data;
     using BMWCarsAndParts.Web.ViewModels;
-
     using Microsoft.AspNetCore.Mvc;
 
     public class HomeController : BaseController
     {
+        private readonly IGetCountService countService;
+
+        public HomeController(IGetCountService countService)
+        {
+            this.countService = countService;
+        }
+
         public IActionResult Index()
         {
-            return this.View();
+            var viewModel = this.countService.GetCounts();
+            return this.View(viewModel);
         }
 
         public IActionResult Privacy()

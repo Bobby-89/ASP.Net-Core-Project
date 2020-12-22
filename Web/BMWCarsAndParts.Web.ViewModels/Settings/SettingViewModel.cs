@@ -1,9 +1,8 @@
 ﻿namespace BMWCarsAndParts.Web.ViewModels.Settings
 {
+    using AutoMapper;
     using BMWCarsAndParts.Data.Models;
     using BMWCarsAndParts.Services.Mapping;
-
-    using AutoMapper;
 
     public class SettingViewModel : IMapFrom<Setting>, IHaveCustomMappings
     {

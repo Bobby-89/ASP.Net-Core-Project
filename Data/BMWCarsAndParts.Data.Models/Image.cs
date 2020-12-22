@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
-using BMWCarsAndParts.Data.Common.Models;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-
-namespace BMWCarsAndParts.Data.Models
+﻿namespace BMWCarsAndParts.Data.Models
 {
+    using System;
+
+    using BMWCarsAndParts.Data.Common.Models;
+
     public class Image : BaseModel<string>
     {
         public Image()
@@ -14,12 +11,14 @@ namespace BMWCarsAndParts.Data.Models
             this.Id = Guid.NewGuid().ToString();
         }
 
-        [Required]
+        public int CarId { get; set; }
+
+        public virtual Car Car { get; set; }
+
+        public string Extension { get; set; }
+
         public string AddedByUserId { get; set; }
 
         public virtual ApplicationUser AddedByUser { get; set; }
-
-        [Required]
-        public string Extension { get; set; }
     }
 }

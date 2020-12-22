@@ -27,6 +27,7 @@
                           {
                               new RolesSeeder(),
                               new CarTypesSeeder(),
+                              new CarModelsSeeder(),
                               new SettingsSeeder(),
                           };
 
