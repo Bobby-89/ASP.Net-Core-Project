@@ -1,5 +1,8 @@
-﻿namespace BMWCarsAndParts.Services.Data
+﻿using System.Linq;
+
+namespace BMWCarsAndParts.Services.Data
 {
+    using System.Collections.Generic;
     using System.Threading.Tasks;
 
     using BMWCarsAndParts.Data.Common.Repositories;
@@ -32,6 +35,24 @@
 
             await this.carRepository.AddAsync(car);
             await this.carRepository.SaveChangesAsync();
+        }
+
+        public IEnumerable<CarInListViewModel> GetAll(int page, int itemsPerPage = 8)
+        {
+            var cars = this.carRepository.AllAsNoTracking()
+                .OrderByDescending(x => x.Id)
+                .Skip((page - 1) * 8).Take(itemsPerPage)
+                .Select(x => new CarInListViewModel
+                {
+                    Id = x.Id,
+                    CarModel = x.CarModel.Name,
+                    Price = x.Price,
+                    ImageUrl = 
+                        x.Images.FirstOrDefault().RemoteImageUrl != null ?
+                        x.Images.FirstOrDefault().RemoteImageUrl :
+                        "/images/cars/" + x.Images.FirstOrDefault().Id + "." + x.Images.FirstOrDefault().Extension,
+                }).ToList();
+            return cars;
         }
     }
 }

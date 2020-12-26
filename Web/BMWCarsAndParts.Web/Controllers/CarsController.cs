@@ -1,15 +1,12 @@
-﻿using System.Security.Claims;
-using BMWCarsAndParts.Data.Models;
-using EllipticCurve;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
-
-namespace BMWCarsAndParts.Web.Controllers
+﻿namespace BMWCarsAndParts.Web.Controllers
 {
     using System.Threading.Tasks;
 
+    using BMWCarsAndParts.Data.Models;
     using BMWCarsAndParts.Services.Data;
     using BMWCarsAndParts.Web.ViewModels.Cars;
+    using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
 
     public class CarsController : Controller
@@ -59,7 +56,12 @@ namespace BMWCarsAndParts.Web.Controllers
 
         public IActionResult All(int id)
         {
-            return this.View();
+            var viewModel = new CarsListViewModel
+            {
+                PageNumber = id,
+                Cars = this.carsService.GetAll(id, 8),
+            };
+            return this.View(viewModel);
         }
     }
 }
