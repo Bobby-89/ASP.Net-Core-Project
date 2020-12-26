@@ -15,7 +15,7 @@
             this.carRepository = carRepository;
         }
 
-        public async Task CreateAsync(CreateCarInputModel input)
+        public async Task CreateAsync(CreateCarInputModel input, string userId)
         {
             var car = new Car
             {
@@ -27,6 +27,7 @@
                 EngineCC = input.EngineCC,
                 FirstRegistrationDate = input.FirstRegistrationDate,
                 HorsePower = input.HorsePower,
+                OwnerId = userId,
             };
 
             await this.carRepository.AddAsync(car);
