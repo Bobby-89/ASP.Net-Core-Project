@@ -54,5 +54,10 @@ namespace BMWCarsAndParts.Services.Data
                 }).ToList();
             return cars;
         }
+
+        public int GetCount()
+        {
+            return this.carRepository.All().Count();
+        }
     }
 }

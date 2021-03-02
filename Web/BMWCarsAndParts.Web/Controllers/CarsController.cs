@@ -54,12 +54,15 @@
             return this.Redirect("/");
         }
 
-        public IActionResult All(int id)
+        public IActionResult All(int id = 1)
         {
+            const int ItemsPerPage = 8;
             var viewModel = new CarsListViewModel
             {
+                ItemsPerPage = ItemsPerPage,
                 PageNumber = id,
-                Cars = this.carsService.GetAll(id, 8),
+                CarsCount = this.carsService.GetCount(),
+                Cars = this.carsService.GetAll(id, ItemsPerPage),
             };
             return this.View(viewModel);
         }

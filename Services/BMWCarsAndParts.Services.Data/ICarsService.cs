@@ -10,5 +10,7 @@
         Task CreateAsync(CreateCarInputModel input, string userId);
 
         IEnumerable<CarInListViewModel> GetAll(int page, int itemsPerPage = 8);
+
+        int GetCount();
     }
 }
