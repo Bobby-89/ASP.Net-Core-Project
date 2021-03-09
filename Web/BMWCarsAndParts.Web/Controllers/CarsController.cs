@@ -1,4 +1,7 @@
-﻿namespace BMWCarsAndParts.Web.Controllers
+﻿using System;
+using Microsoft.AspNetCore.Hosting;
+
+namespace BMWCarsAndParts.Web.Controllers
 {
     using System.Threading.Tasks;
 
@@ -15,13 +18,15 @@
         private readonly ICarModelsService carModelsService;
         private readonly ICarsService carsService;
         private readonly UserManager<ApplicationUser> userManager;
+        private readonly IWebHostEnvironment environment;
 
-        public CarsController(IBodyTypesService bodyTypesService, ICarModelsService carModelsService, ICarsService carsService, UserManager<ApplicationUser> userManager)
+        public CarsController(IBodyTypesService bodyTypesService, ICarModelsService carModelsService, ICarsService carsService, UserManager<ApplicationUser> userManager, IWebHostEnvironment environment)
         {
             this.bodyTypesService = bodyTypesService;
             this.carModelsService = carModelsService;
             this.carsService = carsService;
             this.userManager = userManager;
+            this.environment = environment;
         }
 
         [Authorize]
@@ -48,7 +53,18 @@
 
             ////var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
             var user = await this.userManager.GetUserAsync(this.User);
-            await this.carsService.CreateAsync(input, user.Id);
+
+            try
+            {
+                await this.carsService.CreateAsync(input, user.Id, $"{this.environment.WebRootPath}/images");
+            }
+            catch (Exception ex)
+            {
+                this.ModelState.AddModelError(string.Empty, ex.Message);
+                input.BodyTypes = this.bodyTypesService.GetAllAsKeyValuePairs();
+                input.ModelTypes = this.carModelsService.GetAllAsKeyValuePairs();
+                return this.View(input);
+            }
 
             // TODO: redirect to car info page
             return this.Redirect("/");
@@ -60,6 +76,7 @@
             {
                 return this.NotFound();
             }
+
             const int ItemsPerPage = 8;
             var viewModel = new CarsListViewModel
             {

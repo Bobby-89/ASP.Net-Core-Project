@@ -5,6 +5,7 @@
     using System.ComponentModel.DataAnnotations;
 
     using BMWCarsAndParts.Data.Models;
+    using Microsoft.AspNetCore.Http;
 
     public class CreateCarInputModel
     {
@@ -54,6 +55,8 @@
 
         [Display(Name = "For sale")]
         public bool IsForSale { get; set; }
+
+        public IEnumerable<IFormFile> Images { get; set; }
 
         public IEnumerable<KeyValuePair<string, string>> BodyTypes { get; set; }
 

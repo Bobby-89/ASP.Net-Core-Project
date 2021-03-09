@@ -7,7 +7,7 @@
     var carModel = this.Model.ModelTypes.Select(x => new SelectListItem(x.Value, x.Key));
 }
 
-<form method="post" class="col-md-6 offset-md-0">
+<form method="post" class="col-md-6 offset-md-0" enctype="multipart/form-data">
     <h1>@this.ViewData["Title"]</h1>
 
     <div asp-validation-summary="All"></div>
@@ -16,6 +16,11 @@
         <label asp-for="CarModelId"></label>
         <select asp-for="CarModelId" class="form-control" asp-items="carModel"><option selected="selected" value="">Please select</option></select>
         <span asp-validation-for="CarModelId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Images"></label>
+        <input asp-for="Images" class="form-control" />
+        <span asp-validation-for="Images" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label asp-for="FirstRegistrationDate"></label>
@@ -79,5 +84,5 @@
         <input asp-for="IsForSale" class="form-control" />
         <span asp-validation-for="IsForSale" class="text-danger"></span>
     </div>
-    <input type="submit" class="btn btn-primary"/>
+    <input type="submit" class="btn btn-primary" />
 </form>

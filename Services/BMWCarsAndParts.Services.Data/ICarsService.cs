@@ -7,7 +7,7 @@
 
     public interface ICarsService
     {
-        Task CreateAsync(CreateCarInputModel input, string userId);
+        Task CreateAsync(CreateCarInputModel input, string userId, string imagePath);
 
         IEnumerable<CarInListViewModel> GetAll(int page, int itemsPerPage = 8);
 
