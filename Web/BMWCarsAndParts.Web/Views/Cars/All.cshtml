@@ -9,7 +9,7 @@
     @foreach(var car in this.Model.Cars)
     {
         <div class="media col-md-6">
-            <img src="@car.ImageUrl" class="mr-3" alt="...">
+            <img src="@car.ImageUrl" width="100" class="mr-3 img-responsive">
             <div class="media-body">
                 <h5 class="mt-0">@car.CarModel</h5>
                 @car.Price

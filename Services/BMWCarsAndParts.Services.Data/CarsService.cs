@@ -33,6 +33,11 @@
                 FirstRegistrationDate = input.FirstRegistrationDate,
                 HorsePower = input.HorsePower,
                 OwnerId = userId,
+                Price = input.Price,
+                IsForSale = input.IsForSale,
+                Mileage = input.Mileage,
+                WheelDrive = input.WheelDrive,
+                Transmission = input.Transmission,
             };
 
             // /wwwroot/images/cars/{id}.{ext}
