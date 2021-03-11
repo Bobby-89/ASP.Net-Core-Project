@@ -87,5 +87,10 @@ namespace BMWCarsAndParts.Web.Controllers
             };
             return this.View(viewModel);
         }
+
+        public IActionResult ById()
+        {
+            return this.View();
+        }
     }
 }
