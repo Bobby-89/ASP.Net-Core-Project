@@ -88,9 +88,10 @@ namespace BMWCarsAndParts.Web.Controllers
             return this.View(viewModel);
         }
 
-        public IActionResult ById()
+        public IActionResult ById(int id)
         {
-            return this.View();
+            var car = this.carsService.GetById<SingleCarViewModel>(id);
+            return this.View(car);
         }
     }
 }

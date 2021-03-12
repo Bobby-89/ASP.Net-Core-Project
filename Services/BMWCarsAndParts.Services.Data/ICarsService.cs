@@ -12,5 +12,7 @@
         IEnumerable<CarInListViewModel> GetAll(int page, int itemsPerPage = 8);
 
         int GetCount();
+
+        T GetById<T>(int id);
     }
 }

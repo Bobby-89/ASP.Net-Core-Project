@@ -1,4 +1,6 @@
-﻿namespace BMWCarsAndParts.Services.Data
+﻿using BMWCarsAndParts.Services.Mapping;
+
+namespace BMWCarsAndParts.Services.Data
 {
     using System;
     using System.Collections.Generic;
@@ -12,7 +14,7 @@
 
     public class CarsService : ICarsService
     {
-        private readonly string[] AllowedExtensions = new[] { "jpg", "png", "gif" };
+        private readonly string[] allowedExtensions = new[] { "jpg", "png", "gif" };
         private readonly IDeletableEntityRepository<Car> carRepository;
 
         public CarsService(IDeletableEntityRepository<Car> carRepository)
@@ -46,7 +48,7 @@
             {
                 var extension = Path.GetExtension(image.FileName).TrimStart('.');
 
-                if (!this.AllowedExtensions.Any(x => extension.EndsWith(x)))
+                if (!this.allowedExtensions.Any(x => extension.EndsWith(x)))
                 {
                     throw new Exception($"Invalid image extention {extension}");
                 }
@@ -83,6 +85,14 @@
                         "/images/cars/" + x.Images.FirstOrDefault().Id + "." + x.Images.FirstOrDefault().Extension,
                 }).ToList();
             return cars;
+        }
+
+        public T GetById<T>(int id)
+        {
+            var car = this.carRepository.AllAsNoTracking().Where(x => x.Id == id)
+                .To<T>().FirstOrDefault();
+
+            return car;
         }
 
         public int GetCount()
